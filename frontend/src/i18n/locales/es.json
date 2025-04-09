@@ -1,0 +1,72 @@
+{
+    "common": {
+        "loading": "Cargando...",
+        "error": "Error: {{message}}",
+        "back": "← Volver",
+        "save": "Guardar",
+        "delete": "Eliminar",
+        "cancel": "Cancelar",
+        "close": "Cerrar"
+    },
+    "forms": {
+        "title": "Formularios",
+        "createNew": "Crear Nuevo Formulario",
+        "editForm": "Editar Formulario",
+        "formPreview": "Vista Previa",
+        "livePreview": "Vista Previa en Vivo",
+        "status": {
+            "published": "Publicado",
+            "draft": "Borrador"
+        },
+        "actions": {
+            "saveDraft": "Guardar Borrador",
+            "publish": "Publicar Formulario",
+            "delete": "Eliminar Formulario",
+            "deleteConfirm": "¿Estás seguro de que quieres eliminar este formulario?"
+        },
+        "validation": {
+            "titleRequired": "El título es obligatorio",
+            "labelRequired": "La etiqueta del campo es obligatoria",
+            "typeRequired": "El tipo de campo es obligatorio",
+            "optionsRequired": "Por favor, añade al menos una opción para el {{type}}",
+            "addField": "Por favor, añade al menos un campo a tu formulario",
+            "fixErrors": "Por favor, corrige los errores de validación"
+        },
+        "notifications": {
+            "publishSuccess": "¡Formulario publicado con éxito!",
+            "saveSuccess": "¡Borrador guardado con éxito!",
+            "deleteSuccess": "¡Formulario eliminado con éxito!",
+            "error": "Ocurrió un error: {{message}}"
+        }
+    },
+    "fields": {
+        "types": {
+            "text": "Campo de Texto",
+            "email": "Correo Electrónico",
+            "phone": "Número de Teléfono",
+            "password": "Contraseña",
+            "date": "Fecha",
+            "textarea": "Área de Texto",
+            "select": "Lista Desplegable",
+            "checkbox": "Casilla de Verificación",
+            "radio": "Botones de Radio"
+        },
+        "labels": {
+            "title": "Título",
+            "description": "Descripción",
+            "type": "Tipo",
+            "label": "Etiqueta",
+            "placeholder": "Texto de Ejemplo",
+            "options": "Opciones",
+            "required": "Obligatorio"
+        },
+        "placeholders": {
+            "title": "Ingresa el título del formulario...",
+            "description": "Ingresa la descripción del formulario...",
+            "label": "Ingresa la etiqueta del campo...",
+            "placeholder": "Ingresa el texto de ejemplo...",
+            "options": "Ingresa las opciones (una por línea)",
+            "phone": "123-456-7890"
+        }
+    }
+} 

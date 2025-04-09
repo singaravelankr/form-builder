@@ -1,0 +1,89 @@
+{
+    "common": {
+        "loading": "Loading...",
+        "error": "An error occurred: {{message}}",
+        "back": "← Back",
+        "cancel": "Cancel",
+        "delete": "Delete",
+        "save": "Save", 
+        "saving": "Save Draft",
+        "publishing": "Publish Form",
+        "close": "Close"
+    },
+    "menus": {
+        "forms": "Forms",
+        "createform": "Create Form",
+        "welcome": "Welcome, ",
+        "logout": "Logout",
+        "login": "Login",
+        "register": "Register",
+        "projectName": "Smart Form Builder"
+    },
+    "form": {
+        "title": "Forms",
+        "create": "Create New Form",
+        "list": "Forms List",
+        "formsempty": "No forms found",
+        "firstform": "Get started by creating your first form",
+        "addanotherform": "Add another form",
+        "edit": "Edit Form",
+        "preview": "Form Preview",
+        "livePreview": "Live Preview",
+        "details": {
+            "formTitle": "Title",
+            "formTitlePlaceholder": "Enter Title",
+            "description": "Description",
+            "descriptionPlaceholder": "Enter Description"
+        },
+        "fields": {
+            "noFields": "No fields added",
+            "getStarted": "Get started by adding a new field to your form",
+            "addFirstField": "Add First Field"
+        },
+        "actions": {
+            "saveDraft": "Save Draft",
+            "publish": "Publish Form",
+            "deleteConfirm": "Are you sure you want to delete this form?"
+        },
+        "notifications": {
+            "error": "Error: {{message}}",
+            "saveSuccess": "Draft saved successfully!",
+            "publishSuccess": "Form published successfully!"
+        },
+        "validation": {
+            "titleRequired": "Form title is required",
+            "addField": "Please add at least one field to your form",
+            "labelRequired": "Field label is required",
+            "typeRequired": "Field type is required",
+            "optionsRequired": "Please add at least one option for {{type}}",
+            "fixErrors": "Please fix the validation errors"
+        },
+        "published": "Published",
+        "draft": "Draft"
+    },
+    "field": {
+        "label": "Label",
+        "labelPlaceholder": "Enter field label...",
+        "type": "Type",
+        "types": {
+            "text": "Text Input",
+            "textarea": "Text Area",
+            "select": "Dropdown",
+            "checkbox": "Checkbox",
+            "radio": "Radio Buttons",
+            "date": "Date",
+            "email": "Email",
+            "password": "Password",
+            "phone": "Phone Number"
+        },
+        "selectType": "Select any one option",
+        "placeholder": "Placeholder",
+        "placeholderPlaceholder": "Please provide input",
+        "options": "Options",
+        "optionsPlaceholder": "Enter options (comma-separated)",
+        "optionsHelp": "Enter options separated by commas",
+        "required": "Required field",
+        "delete": "Delete",
+        "addField": "Add Field"
+    }
+} 

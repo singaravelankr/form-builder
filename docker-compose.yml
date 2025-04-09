@@ -1,0 +1,69 @@
+#version: '3.8'
+
+services:
+  # PHP Laravel Service (Backend)
+  backend:
+    build:
+      context: ./docker/php
+      dockerfile: Dockerfile
+    container_name: formbuilder-backend
+    restart: unless-stopped
+    working_dir: /var/www
+    volumes:
+      - ./backend:/var/www
+    networks:
+      - formbuilder-network
+
+  # Nginx Service (Backend)
+  nginx:
+    image: nginx:alpine
+    container_name: formbuilder-nginx
+    restart: unless-stopped
+    ports:
+      - "8000:80"
+    volumes:
+      - ./backend:/var/www
+      - ./docker/nginx/conf.d:/etc/nginx/conf.d
+    networks:
+      - formbuilder-network
+    depends_on:
+      - backend
+
+  # PostgreSQL Service
+  db:
+    image: postgres:15-alpine
+    container_name: formbuilder-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: formbuilder
+      POSTGRES_USER: formbuilder
+      POSTGRES_PASSWORD: formbuilder_secret
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - formbuilder-network
+
+  # Frontend Service (React)
+  frontend:
+    build:
+      context: ./docker/node
+      dockerfile: Dockerfile
+    container_name: formbuilder-frontend
+    volumes:
+      - ./frontend:/app
+    working_dir: /app
+    ports:
+      - "3000:3000"
+    networks:
+      - formbuilder-network
+    environment:
+      - VITE_API_URL=http://localhost:8000/api
+
+networks:
+  formbuilder-network:
+    driver: bridge
+
+volumes:
+  postgres_data: 

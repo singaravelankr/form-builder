@@ -1,0 +1,13 @@
+# Handle line endings automatically
+* text=auto
+
+# Explicitly declare binary files
+*.{jpg,png,gif,ico,pdf,phar} binary
+
+# Specific files that should keep CRLF (e.g., Windows batch files)
+*.bat text eol=crlf
+
+# Specific files that should always use LF
+*.sh text eol=lf
+*.php text eol=lf
+*.env text eol=lf

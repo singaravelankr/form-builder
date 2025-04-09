@@ -1,0 +1,89 @@
+{
+    "common": {
+        "loading": "Laden...",
+        "error": "Ein Fehler ist aufgetreten: {{message}}",
+        "back": "← Zurück",
+        "cancel": "Abbrechen",
+        "delete": "Löschen",
+        "save": "Speichern",    
+        "saving": "Entwurf speichern",
+        "publishing": "Formular veröffentlichen",
+        "close": "Schließen"
+    },
+    "menus": {
+        "forms": "Formulare",
+        "createform": "Neues Formular erstellen",
+        "welcome": "Willkommen,",
+        "logout": "Abmelden",
+        "login": "Login",
+        "register": "Registrieren",
+        "projectName": "Smart Form Builder"
+    },
+    "form": {
+        "title": "Formulare",
+        "create": "Neues Formular erstellen",
+        "list": "Formularliste",
+        "formsempty": "Keine Formulare gefunden",
+        "firstform": "Erstellen Sie Ihr erstes Formular",
+        "addanotherform": "Noch ein Formular erstellen",
+        "edit": "Formular bearbeiten",
+        "preview": "Formularvorschau",
+        "livePreview": "Live-Vorschau",
+        "details": {
+            "formTitle": "Titel",
+            "formTitlePlaceholder": "Titel eingeben",
+            "description": "Beschreibung",
+            "descriptionPlaceholder": "Beschreibung eingeben"
+        },
+        "fields": {
+            "noFields": "Keine Felder hinzugefügt",
+            "getStarted": "Beginnen Sie mit dem Hinzufügen eines neuen Feldes zu Ihrem Formular",
+            "addFirstField": "Erstes Feld hinzufügen"
+        },
+        "actions": {
+            "saveDraft": "Entwurf speichern",
+            "publish": "Formular veröffentlichen",
+            "deleteConfirm": "Möchten Sie dieses Formular wirklich löschen?"
+        },
+        "notifications": {
+            "error": "Fehler: {{message}}",
+            "saveSuccess": "Entwurf erfolgreich gespeichert!",
+            "publishSuccess": "Formular erfolgreich veröffentlicht!"
+        },
+        "validation": {
+            "titleRequired": "Formulartitel ist erforderlich",
+            "addField": "Bitte fügen Sie mindestens ein Feld zu Ihrem Formular hinzu",
+            "labelRequired": "Feldbezeichnung ist erforderlich",
+            "typeRequired": "Feldtyp ist erforderlich",
+            "optionsRequired": "Bitte fügen Sie mindestens eine Option für {{type}} hinzu",
+            "fixErrors": "Bitte beheben Sie die Validierungsfehler"
+        },
+        "published": "Veröffentlicht",
+        "draft": "Entwurf"
+    },
+    "field": {
+        "label": "Bezeichnung",
+        "labelPlaceholder": "Feldbezeichnung eingeben...",
+        "type": "Typ",
+        "types": {
+            "text": "Textfeld",
+            "textarea": "Textbereich",
+            "select": "Auswahlfeld",
+            "checkbox": "Checkbox",
+            "radio": "Radio-Buttons",
+            "date": "Datum",
+            "email": "E-Mail",
+            "password": "Passwort",
+            "phone": "Telefonnummer"
+        },
+        "selectType": "Feldtyp auswählen",
+        "placeholder": "Platzhalter",
+        "placeholderPlaceholder": "Bitte geben Sie einen Platzhaltertext ein...",
+        "options": "Optionen",
+        "optionsPlaceholder": "Optionen eingeben (durch Kommas getrennt)",
+        "optionsHelp": "Optionen durch Kommas trennen",
+        "required": "Pflichtfeld",
+        "delete": "Löschen",
+        "addField": "Feld hinzufügen"
+    }
+} 

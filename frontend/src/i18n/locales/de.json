@@ -1,0 +1,87 @@
+{
+    "common": {
+        "loading": "Wird geladen...",
+        "error": "Fehler: {{message}}",
+        "back": "← Zurück",
+        "save": "Speichern",
+        "saving": "Entwurf speichern",
+        "publishing": "Formular veröffentlichen",
+        "delete": "Löschen",
+        "cancel": "Abbrechen",
+        "close": "Schließen"
+    },
+    "menus": {
+        "forms": "Formulare",
+        "createform": "Neues Formular erstellen",
+        "welcome": "Willkommen,",
+        "logout": "Abmelden",
+        "login": "Login",
+        "register": "Registrieren",
+        "projectName": "Smart Form Builder"
+    },
+    "forms": {
+        "title": "Formulare",
+        "createNew": "Neues Formular erstellen",        
+        "formsempty": "Keine Formulare gefunden",
+        "firstform": "Erstellen Sie Ihr erstes Formular",
+        "addanotherform": "Noch ein Formular erstellen",
+        "list": "Formularliste",
+        "editForm": "Formular bearbeiten",
+        "formPreview": "Formularvorschau",
+        "livePreview": "Live-Vorschau",
+        "status": {
+            "published": "Veröffentlicht",
+            "draft": "Entwurf"
+        },
+        "actions": {
+            "saveDraft": "Entwurf speichern",
+            "publish": "Formular veröffentlichen",
+            "delete": "Formular löschen",
+            "deleteConfirm": "Sind Sie sicher, dass Sie dieses Formular löschen möchten?"
+        },
+        "validation": {
+            "titleRequired": "Titel ist erforderlich",
+            "labelRequired": "Feldbezeichnung ist erforderlich",
+            "typeRequired": "Feldtyp ist erforderlich",
+            "optionsRequired": "Bitte fügen Sie mindestens eine Option für {{type}} hinzu",
+            "addField": "Bitte fügen Sie mindestens ein Feld zu Ihrem Formular hinzu",
+            "fixErrors": "Bitte korrigieren Sie die Validierungsfehler"
+        },
+        "notifications": {
+            "publishSuccess": "Formular erfolgreich veröffentlicht!",
+            "saveSuccess": "Entwurf erfolgreich gespeichert!",
+            "deleteSuccess": "Formular erfolgreich gelöscht!",
+            "error": "Ein Fehler ist aufgetreten: {{message}}"
+        }
+    },
+    "fields": {
+        "types": {
+            "text": "Textfeld",
+            "email": "E-Mail",
+            "phone": "Telefonnummer",
+            "password": "Passwort",
+            "date": "Datum",
+            "textarea": "Textbereich",
+            "select": "Dropdown-Liste",
+            "checkbox": "Kontrollkästchen",
+            "radio": "Optionsfelder"
+        },
+        "labels": {
+            "title": "Titel",
+            "description": "Beschreibung",
+            "type": "Typ",
+            "label": "Bezeichnung",
+            "placeholder": "Platzhalter",
+            "options": "Optionen",
+            "required": "Erforderlich"
+        },
+        "placeholders": {
+            "title": "Formulartitel eingeben...",
+            "description": "Formularbeschreibung eingeben...",
+            "label": "Feldbezeichnung eingeben...",
+            "placeholder": "Bitte geben Sie einen Platzhaltertext ein...",
+            "options": "Optionen eingeben (eine pro Zeile)",
+            "phone": "123-456-7890"
+        }
+    }
+} 

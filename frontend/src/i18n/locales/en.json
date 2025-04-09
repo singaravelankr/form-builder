@@ -1,0 +1,87 @@
+{
+    "common": {
+        "loading": "Loading...",
+        "error": "Error: {{message}}",
+        "back": "← Back",
+        "save": "Save",
+        "saving": "Save Draft",
+        "publishing": "Publish Form",
+        "delete": "Delete",
+        "cancel": "Cancel",
+        "close": "Close"
+    },
+    "menus": {
+        "forms": "Forms",
+        "createform": "Create Form",
+        "welcome": "Welcome,",
+        "logout": "Logout",
+        "login": "Login",
+        "register": "Register",
+        "projectName": "Smart Form Builder"
+    },
+    "forms": {
+        "title": "Forms",
+        "createNew": "Create New Form",
+        "formsempty": "No forms found",
+        "firstform": "Get started by creating your first form",
+        "addanotherform": "Add another form",
+        "list": "Forms List",
+        "editForm": "Edit Form",
+        "formPreview": "Form Preview",
+        "livePreview": "Live Preview",
+        "status": {
+            "published": "Published",
+            "draft": "Draft"
+        },
+        "actions": {
+            "saveDraft": "Save Draft",
+            "publish": "Publish Form",
+            "delete": "Delete Form",
+            "deleteConfirm": "Are you sure you want to delete this form?"
+        },
+        "validation": {
+            "titleRequired": "Title is required",
+            "labelRequired": "Field label is required",
+            "typeRequired": "Field type is required",
+            "optionsRequired": "Please add at least one option for the {{type}}",
+            "addField": "Please add at least one field to your form",
+            "fixErrors": "Please fix the validation errors"
+        },
+        "notifications": {
+            "publishSuccess": "Form published successfully!",
+            "saveSuccess": "Draft saved successfully!",
+            "deleteSuccess": "Form deleted successfully!",
+            "error": "An error occurred: {{message}}"
+        }
+    },
+    "fields": {
+        "types": {
+            "text": "Text Input",
+            "email": "Email",
+            "phone": "Phone Number",
+            "password": "Password",
+            "date": "Date",
+            "textarea": "Text Area",
+            "select": "Dropdown",
+            "checkbox": "Checkbox",
+            "radio": "Radio Buttons"
+        },
+        "labels": {
+            "title": "Title",
+            "description": "Description",
+            "type": "Type",
+            "label": "Label",
+            "placeholder": "Placeholder",
+            "options": "Options",
+            "required": "Required"
+        },
+        "placeholders": {
+            "title": "Enter form title...",
+            "description": "Enter form description...",
+            "label": "Enter field label...",
+            "placeholder": "Please provide input",
+            "options": "Enter options (one per line)",
+            "phone": "123-456-7890"
+        }
+    }
+} 
