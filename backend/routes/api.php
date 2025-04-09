@@ -4,6 +4,11 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FormController;
 use Illuminate\Support\Facades\Route;
 
+// Test route
+Route::get('/', function () {
+    return response()->json(['message' => 'API is working!']);
+});
+
 // Public routes
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);

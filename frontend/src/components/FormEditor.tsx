@@ -43,14 +43,25 @@ const FormEditor: React.FC<FormEditorProps> = ({ formId }) => {
 
     const fetchForm = async () => {
         try {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                navigate('/login');
+                return;
+            }
+
             const response = await fetch(`${API_BASE_URL}${API_ENDPOINTS.FORMS.GET(formId?.toString() || '')}`, {
-                credentials: 'include',
                 headers: {
                     'Accept': 'application/json',
-                    'X-Requested-With': 'XMLHttpRequest',
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`,
                 },
             });
             if (!response.ok) {
+                if (response.status === 401) {
+                    localStorage.removeItem('token');
+                    navigate('/login');
+                    return;
+                }
                 throw new Error(t('form.notifications.error', { message: 'Failed to fetch form' }));
             }
             const data = await response.json();
@@ -107,64 +118,61 @@ const FormEditor: React.FC<FormEditorProps> = ({ formId }) => {
                 return;
             }
 
-            const url = formId 
-                ? `${API_BASE_URL}${API_ENDPOINTS.FORMS.UPDATE(formId.toString())}`
-                : `${API_BASE_URL}${API_ENDPOINTS.FORMS.CREATE}`;
-            const method = formId ? 'PUT' : 'POST';
+            const token = localStorage.getItem('token');
+            if (!token) {
+                navigate('/login');
+                return;
+            }
 
-            const response = await fetch(url, {
-                method,
+            const formData = {
+                ...form,
+                is_published: shouldPublish
+            };
+
+            const response = await fetch(`${API_BASE_URL}${API_ENDPOINTS.FORMS.CREATE}`, {
+                method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
                     'Accept': 'application/json',
-                    'X-Requested-With': 'XMLHttpRequest',
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`,
                 },
-                credentials: 'include',
-                body: JSON.stringify({
-                    ...form,
-                    is_published: shouldPublish,
-                    fields: form.fields.map(field => ({
-                        ...field,
-                        required: !!field.required,
-                        options: ['select', 'checkbox', 'radio'].includes(field.type) ? field.options || [] : undefined
-                    }))
-                }),
+                body: JSON.stringify(formData),
             });
 
-            const data = await response.json();
-            
             if (!response.ok) {
-                // Handle validation errors from the server
-                if (response.status === 422 && data.errors) {
-                    const errorMessages = Object.values(data.errors).flat();
-                    setError(errorMessages.join('\n'));
-                    setNotification({ 
-                        message: t('form.validation.fixErrors'), 
-                        type: 'error' 
-                    });
+                if (response.status === 401) {
+                    localStorage.removeItem('token');
+                    navigate('/login');
                     return;
                 }
                 throw new Error(t('form.notifications.error', { message: 'Failed to save form' }));
             }
 
-            // Show success message before redirecting
+            const data = await response.json();
+            
+            // Show success notification
             setNotification({
-                message: shouldPublish ? t('form.notifications.publishSuccess') : t('form.notifications.saveSuccess'),
+                message: shouldPublish 
+                    ? t('form.notifications.publishSuccess') 
+                    : t('form.notifications.saveSuccess'),
                 type: 'success'
             });
-            window.scrollTo(0, 0); // Scroll to top to make notification visible
 
-            // Wait for the notification to be visible before redirecting
+            // Scroll to top to show notification
+            window.scrollTo(0, 0);
+
+            // Wait for notification to be visible before redirecting
             setTimeout(() => {
-                // Redirect to the forms list page using client-side routing
+                // Redirect to the forms list page
                 navigate('/forms');
-            }, 1000);
+            }, 1500);
 
         } catch (err) {
-            const errorMessage = err instanceof Error ? err.message : t('common.error', { message: 'An error occurred while saving the form' });
-            setError(errorMessage);
-            setNotification({ message: errorMessage, type: 'error' });
-            console.error('Form submission error:', err);
+            setError(err instanceof Error ? err.message : t('common.error', { message: 'An error occurred' }));
+            setNotification({
+                message: err instanceof Error ? err.message : t('common.error', { message: 'An error occurred' }),
+                type: 'error'
+            });
         }
     };
 

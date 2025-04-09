@@ -34,16 +34,26 @@ const FormList: React.FC = () => {
 
     const fetchForms = async () => {
         try {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                navigate('/login');
+                return;
+            }
+
             const response = await fetch(`${API_BASE_URL}${API_ENDPOINTS.FORMS.LIST}`, {
-                credentials: 'include',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    'X-Requested-With': 'XMLHttpRequest',
+                    'Authorization': `Bearer ${token}`,
                 },
             });
             
             if (!response.ok) {
+                if (response.status === 401) {
+                    localStorage.removeItem('token');
+                    navigate('/login');
+                    return;
+                }
                 throw new Error(t('form.notifications.error', { message: 'Failed to fetch forms' }));
             }
             
@@ -78,19 +88,26 @@ const FormList: React.FC = () => {
     const handleDelete = async (id: number) => {
         if (window.confirm(t('form.actions.deleteConfirm'))) {
             try {
-                await fetch('http://localhost:8000/sanctum/csrf-cookie', {
-                    credentials: 'include',
-                });
+                const token = localStorage.getItem('token');
+                if (!token) {
+                    navigate('/login');
+                    return;
+                }
 
                 const response = await fetch(`${API_BASE_URL}${API_ENDPOINTS.FORMS.DELETE(id.toString())}`, {
                     method: 'DELETE',
-                    credentials: 'include',
                     headers: {
                         'Accept': 'application/json',
-                        'X-Requested-With': 'XMLHttpRequest',
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`,
                     },
                 });
                 if (!response.ok) {
+                    if (response.status === 401) {
+                        localStorage.removeItem('token');
+                        navigate('/login');
+                        return;
+                    }
                     throw new Error(t('form.notifications.error', { message: 'Failed to delete form' }));
                 }
                 setForms(forms.filter(form => form.id !== id));
