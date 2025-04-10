@@ -26,6 +26,9 @@ cd form-builder
 ```bash
 docker-compose down -v
 docker system prune -f
+docker image prune -a
+docker builder prune --all -f
+
 
 docker-compose build --no-cache
 docker-compose up -d
@@ -55,6 +58,7 @@ docker-compose exec -u root backend chmod -R 777 /var/www/storage
 docker-compose exec -u root backend chmod -R 777 /var/www/bootstrap/cache
 
 chmod -R 777 storage bootstrap/cache
+
 ```
 
 ## Frontend Setup
@@ -64,10 +68,6 @@ chmod -R 777 storage bootstrap/cache
 # Install dependencies if needed
 docker-compose exec frontend npm install
 
-#reStart services:
-docker-compose down -v
-docker-compose up -d
-
 # Start the dev server
 docker-compose exec frontend npm run dev
 ```
@@ -75,6 +75,8 @@ docker-compose exec frontend npm run dev
 ### 1. Start Docker Containers
 ```bash
 docker-compose up -d
+docker-compose exec backend php artisan migrate
+
 ```
 
 ### Verify Setup
