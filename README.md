@@ -55,7 +55,6 @@ docker-compose exec -u root backend chmod -R 777 /var/www/storage
 docker-compose exec -u root backend chmod -R 777 /var/www/bootstrap/cache
 
 chmod -R 777 storage bootstrap/cache
-
 ```
 
 ## Frontend Setup
@@ -84,7 +83,6 @@ docker-compose up -d
 docker-compose ps  #to see running containers
 docker-compose logs #to see logs
 
-
 All containers are up and running:
 -backend: The PHP backend service is running and listening on port 9000 internally
 -db: The PostgreSQL database is running and exposed on port 5432
@@ -94,6 +92,8 @@ All containers are up and running:
 API_URL=http://localhost:8000/api
 FRONTEND_URL=http://localhost:3000
 
+**NOTE:** 
+_The repo contains the Postman collection along with setup instructions, located in the **documents** folder._
 
 ## Troubleshooting
 
@@ -141,6 +141,7 @@ FRONTEND_URL=http://localhost:3000
 - [Laravel Documentation](https://laravel.com/docs)
 - [React Documentation](https://reactjs.org/docs)
 - [Docker Documentation](https://docs.docker.com)
+
 
 ## Contact Information
 
