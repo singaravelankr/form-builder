@@ -24,9 +24,15 @@ cd form-builder
 ### 2. Docker Setup
 1. Rebuild containers with proper cache clearing:
 ```bash
+# 1. Stop and remove all containers, networks, and volumes
 docker-compose down -v
-docker system prune -f
 
+# 2. Nuclear cleanup (images, build cache, orphaned volumes)
+docker system prune -a -f --volumes
+docker image prune -a
+docker builder prune --all -f
+
+# 3. Rebuild from scratch
 docker-compose build --no-cache
 docker-compose up -d
 
@@ -36,53 +42,44 @@ docker-compose up -d
 
 ### 1. Install Dependencies
 ```bash
-docker-compose exec -u root backend composer install
-```
+# Install dependencies and fix permissions
+docker-compose exec -u root backend sh -c "
+    composer install &&
+    chown -R www-data:www-data /var/www &&
+    chmod -R 775 /var/www/storage /var/www/bootstrap/cache
+"
 
-### 2. Generate Application Key
-```bash
-docker-compose exec backend php artisan key:generate
-docker-compose exec backend php artisan migrate:fresh
-
-docker-compose exec backend php artisan migrate
-```
-
-### 3. Set Directory Permissions (Optional)
-(Optional) if you get folder permissions error - Set up Laravel permissions
-```bash
-docker-compose exec -u root backend chown -R www-data:www-data /var/www
-docker-compose exec -u root backend chmod -R 777 /var/www/storage
-docker-compose exec -u root backend chmod -R 777 /var/www/bootstrap/cache
-
-chmod -R 777 storage bootstrap/cache
-
+# Initialize Laravel and Generate Application Key
+docker-compose exec backend sh -c "
+    php artisan key:generate &&
+    php artisan migrate:fresh --seed
+"
 ```
 
 ## Frontend Setup
 
 ### 1. Install Dependencies
 ```bash
-# Install dependencies if needed
-docker-compose exec frontend npm install
-
-#reStart services:
-docker-compose down -v
-docker-compose up -d
-
-# Start the dev server
-docker-compose exec frontend npm run dev
+# Install dependencies and start dev server
+docker-compose exec frontend sh -c "
+    npm install --no-cache && 
+    npm run dev
+"
 ```
 
-### 1. Start Docker Containers
-```bash
-docker-compose up -d
-```
 
 ### Verify Setup
 
 ```bash
-docker-compose ps  #to see running containers
-docker-compose logs #to see logs
+# Check running services
+docker-compose ps
+
+# Tail logs (use service name like 'backend' or 'frontend')
+docker-compose logs -f
+
+# Test endpoints (example)
+curl -I http://localhost:8000/api
+curl -I http://localhost:3000
 
 
 All containers are up and running:
@@ -132,11 +129,6 @@ FRONTEND_URL=http://localhost:3000
 
 ## Additional Resources
 
-### Documentation
-- [API Documentation](docs/API.md)
-- [System Components](docs/SystemComponents.md)
-- [GitHub Setup Guide](docs/GitHubSetupGuide.md)
-
 ### Support
 - [Laravel Documentation](https://laravel.com/docs)
 - [React Documentation](https://reactjs.org/docs)
@@ -147,4 +139,3 @@ FRONTEND_URL=http://localhost:3000
 For technical support or questions:
 - Email: singaravelan.kr@gmail.com
 - LinkedIn: https://www.linkedin.com/in/singaravelan-krishnan
-
